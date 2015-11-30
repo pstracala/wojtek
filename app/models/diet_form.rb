@@ -1,16 +1,21 @@
-class DietForm < MailForm::Base
-  attribute :name,      :validate => true
-  attribute :email,     :validate => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
-  attribute :message
-  attribute :nickname,  :captcha  => true
+class DietForm
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
 
-  # Declare the e-mail headers. It accepts anything the mail method
-  # in ActionMailer accepts.
-  def headers
-    {
-        :subject => "My Contact Form",
-        :to => "pawelekstro@gmail.com",
-        :from => %("#{name}" <#{email}>)
-    }
+  attr_accessor :first_name, :last_name, :email, :sex, :weight, :height
+
+  validates :name, presence: true
+  validates_format_of :email, with: /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})\z/i
+
+  def initialize(attributes = {})
+    attributes.each do |name, value|
+      send("#{name}=", value)
+    end
   end
+
+  def persisted?
+    false
+  end
+
 end

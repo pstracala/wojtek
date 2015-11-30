@@ -2,18 +2,22 @@ class DietFormsController < ApplicationController
 
   def new
     @diet_form = DietForm.new
+    #Mailer.test.deliver_now
   end
 
   def create
     @diet_form = DietForm.new(params[:diet_form])
-    @diet_form.request = request
-    if @diet_form.deliver
-      flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
+    puts @diet_form.to_yaml
+    if @diet_form #.deliver
+      flash.now[:notice] = 'Dziękuję za zgłoszenie. Niedługo się skontaktujemy.'
       render :new
     else
-      flash.now[:error] = 'Cannot send message.'
+      flash.now[:error] = 'Wystąpił nieznany błąd.'
       render :new
     end
+    #redirect_to new_diet_form_path
   end
+
+  
   
 end

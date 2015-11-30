@@ -1,10 +1,41 @@
-%div{:align => "center"}
-  %h3 Send A message to Us
-  = simple_form_for @diet_form, :html => {:class => 'form-horizontal' } do |f|
-    = f.input :name, :required => true
-    = f.input :email, :required => true
-    = f.input :message, :as => :text, :required => true
-    .hidden
-      = f.input :nickname, :hint => 'Leave this field blank!'
-    %div
-      = f.button :submit, 'Send message', :class=> "btn btn-primary"
+
+.vertical-center
+  .container
+    .row
+      .col-xs-12.text-center
+        %h3 PLAN TRENINGOWY/DIETETYCZNY
+        %br
+      .col-xs-12.text-center.blue-container
+        .col-xs-3
+          ZDJECIE
+        .col-xs-9
+          = form_for @diet_form, :url => url_for(:controller => 'diet_forms', :action => 'create') do |f|
+            .row
+              .col-xs-4
+                = f.label 'Imię:', class: "label"
+                = f.text_field :first_name, :class => "form-control", :required => true
+              .col-xs-4
+                = f.label 'Nazwisko:', class: "label"
+                = f.text_field :last_name, :class => "form-control", :required => true
+              .col-xs-4
+                = f.label 'Email:', class: "label"
+                = f.email_field :email, :class => "form-control", :required => true
+            %br
+            .row
+              .col-xs-4
+                = f.label 'Waga:', class: "label"
+                = f.number_field :weight, :class => "form-control", :required => true
+              .col-xs-4
+                = f.label 'Wzrost:', class: "label"
+                = f.number_field :height, :class => "form-control", :required => true
+              .col-xs-4
+                = f.label 'Płeć:', class: "label"
+                %br
+                = f.select :sex, ['Kobieta', 'Mężczyzna'], :class => "selectpicker", :required => true
+            %br
+            %br
+            .row
+              .col-xs-4
+              .col-xs-4
+                = f.submit 'ZAPLANUJ TRENING/DIETĘ', :class => "btn btn-warning"
+      %p#notice= notice
