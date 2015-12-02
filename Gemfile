@@ -48,3 +48,5 @@ gem 'quiet_assets', group: :development
 gem 'rails_12factor', group: :production
 gem 'easy_captcha'
 gem 'rmagick'
+gem 'therubyracer'
+gem 'execjs'
