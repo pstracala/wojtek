@@ -46,3 +46,5 @@ gem 'sass-rails', '>= 3.2'
 gem "haml-rails", "~> 0.9"
 gem 'quiet_assets', group: :development
 gem 'rails_12factor', group: :production
+gem 'easy_captcha'
+gem 'rmagick'

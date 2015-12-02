@@ -26,3 +26,11 @@ html, body {
   -webkit-justify-content : center;
   justify-content : center;
 }
+
+.btn-warning {
+  @include button-variant(white, #0f75bc, #0f75bc);
+}
+
+.text-red {
+  color: red;
+}

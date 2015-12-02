@@ -1,9 +1,11 @@
 class Mailer < ActionMailer::Base
 
+#Wojtek.herman@icloud.com
+  def send_mail(diet_form)
+    @diet_form = diet_form
 
-  def test
-    mail(from: 'example@google.com',
+    mail(from: @diet_form.first_name + ' ' + @diet_form.last_name,
          to: 'pawelekstro@gmail.com',
-         subject: 'Welcome to My Awesome Site')
+         subject: @diet_form.target)
   end
 end

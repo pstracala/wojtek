@@ -3,12 +3,12 @@
   .container
     .row
       .col-xs-12.text-center
-        .col-xs-6
+        .col-xs-7
           = image_tag "johnny.png", class: "img-responsive"
-        .col-xs-6
+        .col-xs-5
           %h1 Zaplanuj dietę i trening
           %br
-          = form_for @diet_form, :url => url_for(:controller => 'diet_forms', :action => 'create') do |f|
+          = form_for @diet_form, :url => url_for(:controller => 'diet_forms', :action => 'create'), remote: true do |f|
             .row
               .col-xs-3.text-left
                 = f.label 'Imię:'
@@ -48,13 +48,16 @@
                 %br
               .col-sm-offset-3.col-xs-9.text-left
                 %label.checkbox-inline
-                  %input{:type => "checkbox", :value => ""}>/
+                  = f.check_box :terms, value: "", :required => true
                   Wyrażam zgodę na przetwarzanie danych osobowych
-                  %br
                   i akceptuję 
-                  = link_to 'regulamin', '#'
-            %br
+                  = link_to 'regulamin.', '#'
+            %hr
+            .row
+              .col-sm-offset-3.col-xs-9.text-left
+                #captcha
+                  = render partial: 'captcha'
             %br
               .pull-right
-                = f.submit 'ZAPLANUJ TRENING/DIETĘ', :class => "btn btn-warning"
-      %p#notice= notice
+                = f.submit 'WYŚLIJ', :class => "btn btn-warning"
+          #errors
