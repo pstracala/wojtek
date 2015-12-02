@@ -3,39 +3,58 @@
   .container
     .row
       .col-xs-12.text-center
-        %h3 PLAN TRENINGOWY/DIETETYCZNY
-        %br
-      .col-xs-12.text-center.blue-container
-        .col-xs-3
-          ZDJECIE
-        .col-xs-9
+        .col-xs-6
+          = image_tag "johnny.png", class: "img-responsive"
+        .col-xs-6
+          %h1 Zaplanuj dietę i trening
+          %br
           = form_for @diet_form, :url => url_for(:controller => 'diet_forms', :action => 'create') do |f|
             .row
-              .col-xs-4
-                = f.label 'Imię:', class: "label"
-                = f.text_field :first_name, :class => "form-control", :required => true
-              .col-xs-4
-                = f.label 'Nazwisko:', class: "label"
-                = f.text_field :last_name, :class => "form-control", :required => true
-              .col-xs-4
-                = f.label 'Email:', class: "label"
-                = f.email_field :email, :class => "form-control", :required => true
-            %br
-            .row
-              .col-xs-4
-                = f.label 'Waga:', class: "label"
-                = f.number_field :weight, :class => "form-control", :required => true
-              .col-xs-4
-                = f.label 'Wzrost:', class: "label"
-                = f.number_field :height, :class => "form-control", :required => true
-              .col-xs-4
-                = f.label 'Płeć:', class: "label"
+              .col-xs-3.text-left
+                = f.label 'Imię:'
+              .col-xs-9.pull-left
+                = f.text_field :first_name, :class => "form-control", :required => true, placeholder: 'Imię'
+              - 2.times do
                 %br
-                = f.select :sex, ['Kobieta', 'Mężczyzna'], :class => "selectpicker", :required => true
+              .col-xs-3.text-left
+                = f.label 'Nazwisko:'
+              .col-xs-9.pull-left
+                = f.text_field :last_name, :class => "form-control", :required => true, placeholder: 'Nazwisko'
+              - 2.times do
+                %br
+              .col-xs-3.text-left
+                = f.label 'Email:'
+              .col-xs-9.pull-left
+                = f.email_field :email, :class => "form-control", :required => true, placeholder: 'email@example.com'
+              - 2.times do
+                %br
+              .col-xs-3.text-left
+                = f.label 'Waga:'
+              .col-xs-9.pull-left
+                = f.number_field :weight, :class => "form-control", :required => true, placeholder: 'Waga w kg'
+              - 2.times do
+                %br
+              .col-xs-3.text-left
+                = f.label 'Wzrost:'
+              .col-xs-9.pull-left
+                = f.number_field :height, :class => "form-control", :required => true, placeholder: 'Wzrost w cm'
+              - 2.times do
+                %br
+              .col-xs-3.text-left
+                = f.label 'Cel:'
+              .col-xs-9.pull-left
+                = f.select :target, ['Spalanie tkanki tłuszczowej', 'Wzrost masy mięśniowej'], :class => "selectpicker", :required => true
+              - 2.times do
+                %br
+              .col-sm-offset-3.col-xs-9.text-left
+                %label.checkbox-inline
+                  %input{:type => "checkbox", :value => ""}>/
+                  Wyrażam zgodę na przetwarzanie danych osobowych
+                  %br
+                  i akceptuję 
+                  = link_to 'regulamin', '#'
             %br
             %br
-            .row
-              .col-xs-4
-              .col-xs-4
+              .pull-right
                 = f.submit 'ZAPLANUJ TRENING/DIETĘ', :class => "btn btn-warning"
       %p#notice= notice
