@@ -13,31 +13,31 @@
               .col-xs-3.text-left
                 = f.label 'Imię:'
               .col-xs-9.pull-left
-                = f.text_field :first_name, :class => "form-control", :required => true, placeholder: 'Imię'
+                = f.text_field :first_name, :class => "form-control", :required => true, placeholder: 'Imię', value: 'testImie'
               - 2.times do
                 %br
               .col-xs-3.text-left
                 = f.label 'Nazwisko:'
               .col-xs-9.pull-left
-                = f.text_field :last_name, :class => "form-control", :required => true, placeholder: 'Nazwisko'
+                = f.text_field :last_name, :class => "form-control", :required => true, placeholder: 'Nazwisko', value: 'testnazwisko'
               - 2.times do
                 %br
               .col-xs-3.text-left
                 = f.label 'Email:'
               .col-xs-9.pull-left
-                = f.email_field :email, :class => "form-control", :required => true, placeholder: 'email@example.com'
+                = f.email_field :email, :class => "form-control", :required => true, placeholder: 'email@example.com', value: 'test@o2.pl'
               - 2.times do
                 %br
               .col-xs-3.text-left
                 = f.label 'Waga:'
               .col-xs-9.pull-left
-                = f.number_field :weight, :class => "form-control", :required => true, placeholder: 'Waga w kg'
+                = f.number_field :weight, :class => "form-control", :required => true, placeholder: 'Waga w kg', value: '123'
               - 2.times do
                 %br
               .col-xs-3.text-left
                 = f.label 'Wzrost:'
               .col-xs-9.pull-left
-                = f.number_field :height, :class => "form-control", :required => true, placeholder: 'Wzrost w cm'
+                = f.number_field :height, :class => "form-control", :required => true, placeholder: 'Wzrost w cm', value: '123'
               - 2.times do
                 %br
               .col-xs-3.text-left

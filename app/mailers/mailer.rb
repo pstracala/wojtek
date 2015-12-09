@@ -1,5 +1,6 @@
 class Mailer < ActionMailer::Base
-
+  default from: 'suppoer@example.com'
+  
 #Wojtek.herman@icloud.com
   def send_mail(diet_form)
     @diet_form = diet_form
