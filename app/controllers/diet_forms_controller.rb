@@ -9,7 +9,7 @@ class DietFormsController < ApplicationController
     respond_to do |format|
       if valid_captcha?(params[:captcha])
         if @diet_form.valid?
-          Mailer.send_mail(@diet_form).deliver_now
+          Mailer.send_mail().deliver_later
           format.js { render 'success' }
         else
           format.js { render 'validation_error'}
