@@ -13,48 +13,96 @@
               .col-xs-3.text-left
                 = f.label 'Imię:'
               .col-xs-9.pull-left
-                = f.text_field :first_name, :class => "form-control", :required => true, placeholder: 'Imię', value: 'testImie'
+                = f.text_field :first_name, :class => "form-control", :required => true, placeholder: 'Imię'
               - 2.times do
                 %br
+
               .col-xs-3.text-left
                 = f.label 'Nazwisko:'
               .col-xs-9.pull-left
-                = f.text_field :last_name, :class => "form-control", :required => true, placeholder: 'Nazwisko', value: 'testnazwisko'
+                = f.text_field :last_name, :class => "form-control", :required => true, placeholder: 'Nazwisko'
               - 2.times do
                 %br
+
               .col-xs-3.text-left
                 = f.label 'Email:'
               .col-xs-9.pull-left
-                = f.email_field :email, :class => "form-control", :required => true, placeholder: 'email@example.com', value: 'test@o2.pl'
+                = f.email_field :email, :class => "form-control", :required => true, placeholder: 'email@example.com'
               - 2.times do
                 %br
+
               .col-xs-3.text-left
                 = f.label 'Waga:'
               .col-xs-9.pull-left
-                = f.number_field :weight, :class => "form-control", :required => true, placeholder: 'Waga w kg', value: '123'
+                = f.number_field :weight, :class => "form-control", :required => true, placeholder: 'Waga w kg'
               - 2.times do
                 %br
+
               .col-xs-3.text-left
                 = f.label 'Wzrost:'
               .col-xs-9.pull-left
-                = f.number_field :height, :class => "form-control", :required => true, placeholder: 'Wzrost w cm', value: '123'
+                = f.number_field :height, :class => "form-control", :required => true, placeholder: 'Wzrost w cm'
               - 2.times do
                 %br
+
               .col-xs-3.text-left
-                = f.label 'Cel:'
+                = f.label 'Obwód pasa:'
               .col-xs-9.pull-left
-                = f.select :target, ['Spalanie tkanki tłuszczowej', 'Wzrost masy mięśniowej'], :class => "selectpicker", :required => true
+                = f.number_field :obwod_pasa, :class => "form-control", :required => true, placeholder: 'Obwód pasa w cm'
               - 2.times do
                 %br
-              .col-sm-offset-3.col-xs-9.text-left
-                %label.checkbox-inline
-                  = f.check_box :terms, :required => true
-                  Wyrażam zgodę na przetwarzanie danych osobowych
-                  i akceptuję 
-                  = link_to 'regulamin.', '#'
+
+              .col-xs-6
+                .text-left
+                  = f.label 'Rodzaj wykonywanej pracy:'
+                .pull-left
+                  = f.select :kind_of_work, ['Siedząca', 'Fizyczna'], :class => "selectpicker", :required => true
+              .col-xs-6
+                .text-left
+                  = f.label 'Cel:'
+                .pull-left
+                  = f.select :target, ['Spalanie tkanki tłuszczowej', 'Wzrost masy mięśniowej'], :class => "selectpicker", :required => true
+              
+              - 3.times do
+                %br
+
+              .col-xs-6
+                .text-left
+                  = f.label 'Wstaję o:'
+                .pull-left
+                  = f.select :wake_up_time, [*1..24], :class => "selectpicker", :required => true
+              .col-xs-6
+                .text-left
+                  = f.label 'Kładę się spać o:'
+                .pull-left
+                  = f.select :sleep_time, [*1..24], :class => "selectpicker", :required => true
+
+              - 3.times do
+                %br
+
+              .col-xs-6
+                .text-left
+                  = f.label 'Ilość treningów w tygodniu:'
+                .pull-left
+                  = f.select :training_count, [*1..7], :class => "selectpicker", :required => true
+              .col-xs-6
+                .text-left
+                  = f.label 'Ilość posiłków w ciągu dnia:'
+                .pull-left
+                  = f.select :meals_count, [*5..6], :class => "selectpicker", :required => true
+
+              - 3.times do
+                %br
+              %hr
+            .text-left
+              %label.checkbox-inline
+                = f.check_box :terms, :required => true
+                Wyrażam zgodę na przetwarzanie danych osobowych
+                i akceptuję 
+                = link_to 'regulamin.', '#'
             %hr
             .row
-              .col-sm-offset-3.col-xs-9.text-left
+              .center
                 #captcha
                   = render partial: 'captcha'
             %br
