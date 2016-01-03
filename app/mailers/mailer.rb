@@ -17,7 +17,7 @@ class Mailer < ActionMailer::Base
     @meals_count = meals_count
     
     mail(from: first_name + ' ' + last_name,
-         to: 'wojtek.herman@icloud.com',
+         to: 'test.test.pawel.test@gmail.com',
          subject: target)
   end
   
