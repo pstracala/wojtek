@@ -66,16 +66,18 @@
               - 3.times do
                 %br
 
+              - hours = (1..24).map {|h| "#{h}:00"}
+
               .col-xs-6
                 .text-left
                   = f.label 'Wstaję o:'
                 .pull-left
-                  = f.select :wake_up_time, [*1..24], :class => "selectpicker", :required => true
+                  = f.select :wake_up_time, hours, :class => "selectpicker", :required => true
               .col-xs-6
                 .text-left
                   = f.label 'Kładę się spać o:'
                 .pull-left
-                  = f.select :sleep_time, [*1..24], :class => "selectpicker", :required => true
+                  = f.select :sleep_time, hours, :class => "selectpicker", :required => true
 
               - 3.times do
                 %br
